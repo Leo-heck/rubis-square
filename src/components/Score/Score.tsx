@@ -6,11 +6,14 @@ interface OwnProps {
 
 type Props = OwnProps;
 
-
 export const Score: React.FC<Props> = (props: Props) => {
   const { value } = props;
 
-return <div>Score : <b>{value}</b></div>;
+  return (
+    <div>
+      Score : <b>{value}</b>
+    </div>
+  );
 };
 
-export default (Score);
+export default Score;

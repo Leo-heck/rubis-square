@@ -1,5 +1,5 @@
-export type BoardLine = Array<number>;
-export type Board = Array<BoardLine>;
+export type BoardLine = number[];
+export type Board = BoardLine[];
 
 /**
  * board represents the board of the game, the number is the mapping to the corresponding color
@@ -19,7 +19,7 @@ export interface GameDefinition {
  *  X
  */
 export interface ChangePolicy {
-  mask: Array<Array<boolean>>;
+  mask: boolean[][];
 }
 
 const defaultPolicy = {
@@ -84,7 +84,7 @@ export const processClick = (policy: ChangePolicy) => (game: GameDefinition, x: 
       });
     },
   );
-  return { ...game, board: newBoard, count:game.count+1 };
+  return { ...game, board: newBoard, count: game.count + 1 };
 };
 
 export const defaultProcessClick = processClick(defaultPolicy);
