@@ -15,6 +15,7 @@ type Props = OwnProps;
 
 export const GamePage: React.FC<Props> = (props: Props) => {
   const { classes } = props;
+  let c = 0;
   return (
     <div className={classes.container}>
       <span>Rubis Square</span>

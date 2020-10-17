@@ -3,6 +3,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { Style } from 'jss';
 import { CSSProperties } from '@material-ui/styles';
 import { Tile } from '../Tile';
+import { Score } from '../Score';
 
 import { CustomTheme, getGridDisplay } from '../../style/theme';
 import { GameDefinition, BoardLine, getGameLength } from '../../services/game-service';
@@ -22,18 +23,22 @@ export interface DispatchProps {
 
 type Props = OwnProps & StateProps & DispatchProps;
 
-export const GameComponent: React.FC<Props> = (props: Props) => {
-  const { classes, game, click } = props;
+export let GameComponent: React.FC<Props> = (props: Props) => {
+  // const { classes, count, game, click } = props;
 
-  const handleClick = (x: number, y: number) => () => click(x, y);
+  const handleClick = (x: number, y: number) => () => {props.click(x, y)};
+  
   return (
-    <div className={classes.container}>
-      {game &&
-        game.board.map((boardLine: BoardLine, y: number) =>
-          boardLine.map((value: number, x: number) => (
-            <Tile value={value} onClick={handleClick(x, y)} key={`${value}${x}${y}`} />
-          )),
-        )}
+    <div>
+      <div className={props.classes.container}>
+        {props.game &&
+          props.game.board.map((boardLine: BoardLine, y: number) =>
+            boardLine.map((value: number, x: number) => (
+              <Tile value={value} onClick={handleClick(x, y)} key={`${value}${x}${y}`} />
+            )),
+          )}
+      </div>
+      <Score value={props.game ? props.game.count : 0}/>
     </div>
   );
 };

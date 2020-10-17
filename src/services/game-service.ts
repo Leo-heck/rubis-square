@@ -7,6 +7,7 @@ export type Board = Array<BoardLine>;
 export interface GameDefinition {
   nbColor: number;
   board: Board;
+  count: number;
 }
 
 /**
@@ -83,7 +84,7 @@ export const processClick = (policy: ChangePolicy) => (game: GameDefinition, x: 
       });
     },
   );
-  return { ...game, board: newBoard };
+  return { ...game, board: newBoard, count:game.count+1 };
 };
 
 export const defaultProcessClick = processClick(defaultPolicy);
