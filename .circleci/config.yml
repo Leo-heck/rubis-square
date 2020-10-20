@@ -35,6 +35,9 @@ jobs:
       
       #run audit
       - run: yarn audit
+
+      # check lint : yarn run eslint ./src/**/*.[tj]s ./src/**/*.[tj]sx --fix
+      - run: yarn run eslint ./src/**/*.[tj]s ./src/**/*.[tj]sx
       
       # run tests!
       - run: yarn test

@@ -25,7 +25,7 @@ const initialState = {
         [0, 1, 2],
         [0, 1, 2],
       ],
-      count:0,
+      count: 0,
     },
   },
 };

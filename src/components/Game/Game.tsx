@@ -23,11 +23,13 @@ export interface DispatchProps {
 
 type Props = OwnProps & StateProps & DispatchProps;
 
-export let GameComponent: React.FC<Props> = (props: Props) => {
+export const GameComponent: React.FC<Props> = (props: Props) => {
   // const { classes, count, game, click } = props;
 
-  const handleClick = (x: number, y: number) => () => {props.click(x, y)};
-  
+  const handleClick = (x: number, y: number) => () => {
+    props.click(x, y);
+  };
+
   return (
     <div>
       <div className={props.classes.container}>
@@ -38,7 +40,7 @@ export let GameComponent: React.FC<Props> = (props: Props) => {
             )),
           )}
       </div>
-      <Score value={props.game ? props.game.count : 0}/>
+      <Score value={props.game ? props.game.count : 0} />
     </div>
   );
 };
